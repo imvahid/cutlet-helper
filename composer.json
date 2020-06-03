@@ -34,7 +34,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Va\\CutletMigrate\\CutletHelperServiceProvider"
+        "Va\\CutletHelper\\CutletHelperServiceProvider"
       ],
       "aliases": {
         "CutletHelper" : "Va\\CutletHelper\\Facades\\CutletHelper"
