@@ -1,6 +1,6 @@
 {
   "name": "va/cutlet-helper",
-  "description": "A package to use helper functions in laravel apps.",
+  "description": "A package to use helper functions and Iranian Validator in laravel apps.",
   "keywords": [
     "laravel",
     "helpers",
@@ -8,7 +8,18 @@
     "laravel-helpers",
     "laravel7-package",
     "PHP",
-    "laravel7"
+    "laravel7",
+    "national",
+    "code",
+    "melli",
+    "iban",
+    "sheba",
+    "validation",
+    "iranian",
+    "company",
+    "shenase-melli",
+    "debit",
+    "national-id"
   ],
   "license": "MIT",
   "homepage": "https://github.com/va1hi9da9sh2ou0rz2ad1eh7/cutlet-helper",
