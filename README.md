@@ -216,4 +216,4 @@ $validatedData = $request->validate([
 #### Requirements:
 
 - PHP v7.0 or above
-- Laravel v5.8.0 or above
+- Laravel v5.6.0 or above
