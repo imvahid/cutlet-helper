@@ -2,9 +2,9 @@
 
 namespace Va\CutletHelper\Facades;
 
-use Imanghafoori\SmartFacades\Facade;
+use Imanghafoori\SmartFacades\Facade as CustomFacade;
 
-abstract class BaseFacade extends Facade
+abstract class BaseFacade extends CustomFacade
 {
     //
 }
