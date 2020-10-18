@@ -51,20 +51,6 @@ digitsToEastern(number: 1375);
 isActive(key: ['posts.index', 'posts.create', 'posts.edit'], activeClassName: 'acive');
 
 ```
-#### Open–closed principle in this package
-You can extended the CutletHelper Facade in another packages:
-```
-public function boot()
-{
-    CutletHelper::preCall('integerToken', function ($methodName, $args) {
-        Log::info('This log stored befor execute integerToken function!');
-    });
-    
-    CutletHelper::postCall('*Token', function ($methodName, $args, $result) {
-        Log::info('This log stored after execute integerToken function!');
-    });
-}
-```
 
 #### Validators that exists in package
 - National Code (کد ملی)
