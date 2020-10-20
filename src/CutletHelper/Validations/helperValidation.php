@@ -213,3 +213,18 @@ Validator::extend('shenase_meli', function ($attribute, $value, $parameters, $va
     else
         return false;
 }, config('cutlet-helper.shenase_meli'));
+
+/**
+ *
+ * Validate Iranian Mobile Number
+ *
+ * @param $attribute
+ * @param $code
+ * @param $parameters
+ * @return bool
+ */
+Validator::extend('mobile', function ($attribute, $code, $parameters, $validator) {
+    $status = (bool)preg_match("/^09\d{9}$/", $code);
+
+    return $status;
+}, config('cutlet-helper.mobile'));
