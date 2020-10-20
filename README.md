@@ -58,6 +58,7 @@ isActive(key: ['posts.index', 'posts.create', 'posts.edit'], activeClassName: 'a
 - Debit Card (شماره کارت بانکی)
 - Postal Code (کد پستی)
 - Shenase Meli (شناسه ملی)
+- Mobile (موبایل)
 
 #### Validators Usage
 
@@ -196,6 +197,25 @@ return [
 
 $validatedData = $request->validate([
     'code' => 'shenase_meli',
+]);
+```
+
+> mobile
+```
+return [
+    'mobile' => 'required|mobile'
+];
+
+--OR--
+
+return [
+    'mobile' => ['required, 'mobile']
+];
+
+--OR--
+
+$validatedData = $request->validate([
+    'mobile' => 'mobile',
 ]);
 ```
 
