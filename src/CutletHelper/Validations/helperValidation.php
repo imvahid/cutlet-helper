@@ -228,3 +228,18 @@ Validator::extend('mobile', function ($attribute, $code, $parameters, $validator
 
     return $status;
 }, config('cutlet-helper.mobile'));
+
+/**
+ *
+ * Validate Username With English Characters
+ *
+ * @param $attribute
+ * @param $code
+ * @param $parameters
+ * @return bool
+ */
+Validator::extend('username', function ($attribute, $code, $parameters, $validator) {
+    $status = (bool)preg_match("/^[A-Za-z0-9]+(?:[_][A-Za-z0-9]+)*$/", $code);
+
+    return $status;
+}, config('cutlet-helper.username'));
