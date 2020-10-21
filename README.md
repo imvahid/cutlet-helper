@@ -219,6 +219,24 @@ $validatedData = $request->validate([
 ]);
 ```
 
+> username (Valid characters: English Alphabetic, Numbers and _)
+```
+return [
+    'username' => 'required|username'
+];
+
+--OR--
+
+return [
+    'username' => ['required, 'username']
+];
+
+--OR--
+
+$validatedData = $request->validate([
+    'username' => 'username',
+]);
+```
 #### Requirements:
 
 - PHP v7.0 or above
