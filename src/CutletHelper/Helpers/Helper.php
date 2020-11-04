@@ -2,6 +2,8 @@
 
 namespace Va\CutletHelper\Helpers;
 
+use Illuminate\Support\Facades\Route;
+
 class Helper
 {
     /**
