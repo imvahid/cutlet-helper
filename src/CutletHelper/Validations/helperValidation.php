@@ -243,3 +243,63 @@ Validator::extend('username', function ($attribute, $code, $parameters, $validat
 
     return $status;
 }, config('cutlet-helper.username'));
+
+/**
+ *
+ * Validate Iranian Phone Number
+ *
+ * @param $attribute
+ * @param $code
+ * @param $parameters
+ * @return bool
+ */
+Validator::extend('phone', function ($attribute, $code, $parameters, $validator) {
+    $status = (bool)preg_match("/^0[1-8]{2}[0-9]{8}$/", $code);
+
+    return $status;
+}, config('cutlet-helper.phone'));
+
+/**
+ *
+ * Validate, Check if the two columns together are the unique or no
+ *
+ * @param $attribute
+ * @param $code
+ * @param $parameters
+ * @return bool
+ */
+Validator::extend('unique_dynamic', function ($attribute, $value, $parameters, $validator) {
+    /*
+     * $parameters[0] = table_name      => fields
+     * $parameters[1] = target_column   => name
+     * $parameters[2] = extra_column    => type
+     * $parameters[3] = extra_value     => 'text'
+     * $parameters[4] = ignore_column   => 'id'
+     * $parameters[5] = ignore_value    => 5
+     */
+
+    $table_name = $parameters[0];
+    $target_column = $parameters[1];
+    $extra_column = $parameters[2];
+    $extra_value = $parameters[3];
+    $ignore_column = $parameters[4] ?? null;
+    $ignore_value = $parameters[5] ?? null;
+
+    $query = \Illuminate\Support\Facades\DB::table($table_name)
+        ->where($target_column, $value)
+        ->where($extra_column, $extra_value);
+
+    if( ! ($ignore_column == null && $ignore_value == null) ) {
+        $ignore = \Illuminate\Support\Facades\DB::table($table_name)
+            ->where($target_column, $value)
+            ->where($extra_column, $extra_value)
+            ->where($ignore_column, $ignore_value)
+            ->exists();
+        if ($ignore) {
+            return true;
+        }
+    }
+
+    return !$query->exists();
+
+}, config('cutlet-helper.unique_dynamic'));

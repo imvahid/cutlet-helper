@@ -41,6 +41,7 @@ php artisan vendor:publish --tag=cutlet-helper
 CutletHelper::integerToken(length: 10);
 CutletHelper::stringToken(length: 32, characters: '2345679acdefghjkmnpqrstuvwxyz');
 CutletHelper::digitsToEastern(number: 1375);
+CutletHelper::easternToDigits(number: ۱۲۳۴۵);
 CutletHelper::isActive(key: ['posts.index', 'posts.create', 'posts.edit'], activeClassName: 'acive');
 
 ## Call a helper function:
@@ -48,6 +49,7 @@ CutletHelper::isActive(key: ['posts.index', 'posts.create', 'posts.edit'], activ
 integerToken(length: 10)
 stringToken(length: 32, characters: '2345679acdefghjkmnpqrstuvwxyz');
 digitsToEastern(number: 1375);
+easternToDigits(number: ۱۲۳۴۵);
 isActive(key: ['posts.index', 'posts.create', 'posts.edit'], activeClassName: 'acive');
 
 ```
@@ -59,6 +61,8 @@ isActive(key: ['posts.index', 'posts.create', 'posts.edit'], activeClassName: 'a
 - Postal Code (کد پستی)
 - Shenase Meli (شناسه ملی)
 - Mobile (موبایل)
+- Phone (تلفن ثابت)
+- Unique Dynamic (تشخیص یکتایی دو ستونه)
 
 #### Validators Usage
 
@@ -237,6 +241,60 @@ $validatedData = $request->validate([
     'username' => 'username',
 ]);
 ```
+
+> phone
+```
+return [
+    'phone' => 'required|phone'
+];
+
+--OR--
+
+return [
+    'phone' => ['required, 'phone']
+];
+
+--OR--
+
+$validatedData = $request->validate([
+    'phone' => 'phone',
+]);
+```
+
+> unique_dynamic (table_name, target_column, extra_column, extra_column_value, ignore_column, ignore_column_value)
+```
+return [
+    // Without ignore for create user, 4 parameters
+    // If we want to check a username is unique in users table when type of this useranme equal student
+    // If username = 'v.ashourzadeh' and type = 'student' you can't create username = 'v.ashourzadeh' but create username = 'v.ashourzadeh' if type = 'teacher'
+    'username' => 'required|unique_dynamic:users,username,type,student'
+
+    // With ignore for edit user, 6 parameters
+    // If we want to check a username is unique in users table and ignore this for special id, for example id = 5
+    // If username = 'v.ashourzadeh' and type = 'student' you can set username = 'v.ashourzadeh' when id = 5
+    'username' => 'required|unique_dynamic:users,username,type,student,id,5'
+];
+
+--OR--
+
+return [
+    // Without ignore for create user, 4 parameters
+    'username' => ['required, 'unique_dynamic:users,username,type,student']
+
+    // With ignore for edit user, 6 parameter
+    'username' => ['required, 'unique_dynamic:users,username,type,student,id,5']
+];
+
+--OR--
+
+$validatedData = $request->validate([
+    // Without ignore for create user, 4 parameters
+    'username' => 'unique_dynamic:users,username,type,student',
+    // With ignore for edit user, 6 parameter
+    'username' => 'unique_dynamic:users,username,type,student,id,5',
+]);
+```
+
 #### Requirements:
 
 - PHP v7.0 or above

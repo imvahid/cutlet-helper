@@ -32,11 +32,18 @@ class Helper
 
     public function digitsToEastern($number)
     {
-
         $western = range(0, 9);
         $eastern = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
 
         return str_replace($western, $eastern, $number);
+    }
+
+    public function easternToDigits($number)
+    {
+        $eastern = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+        $western = range(0, 9);
+
+        return str_replace($eastern, $western, $number);
     }
 
     /**

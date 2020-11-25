@@ -15,6 +15,11 @@ function digitsToEastern($number) {
     return CutletHelper::digitsToEastern($number);
 }
 
+function easternToDigits($number) {
+
+    return CutletHelper::easternToDigits($number);
+}
+
 function isActive($key, $activeClassName = 'active') {
 
     return CutletHelper::isActive($key, $activeClassName);
