@@ -30,7 +30,9 @@ php artisan vendor:publish --tag=cutlet-helper
 
 3. digitsToEastern($number) : Covert a Weatern number(English) or digits to Eastern number(Persian or Arabic)
 
-4. isActive($key, $activeClassName = 'active') : Check the route name(string) or route names(array) is avtive or no for css classes
+4. easternToDigits($number) : Covert a Eastern number(Persion, Arabic) to Eastern number(English)
+
+5. isActive($key, $activeClassName = 'active') : Check the route name(string) or route names(array) is avtive or no for css classes
 
 ..
 ```
@@ -41,7 +43,7 @@ php artisan vendor:publish --tag=cutlet-helper
 CutletHelper::integerToken(length: 10);
 CutletHelper::stringToken(length: 32, characters: '2345679acdefghjkmnpqrstuvwxyz');
 CutletHelper::digitsToEastern(number: 1375);
-CutletHelper::easternToDigits(number: ۱۲۳۴۵);
+CutletHelper::easternToDigits(number: ۱۳۷۵);
 CutletHelper::isActive(key: ['posts.index', 'posts.create', 'posts.edit'], activeClassName: 'acive');
 
 ## Call a helper function:
