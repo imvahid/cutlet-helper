@@ -65,6 +65,8 @@ isActive(key: ['posts.index', 'posts.create', 'posts.edit'], activeClassName: 'a
 - Mobile (موبایل)
 - Phone (تلفن ثابت)
 - Unique Dynamic (تشخیص یکتایی دو ستونه)
+- Persian Alphabetic (الفبای فارسی)
+- Persian Number (اعداد فارسی)
 
 #### Validators Usage
 
@@ -294,6 +296,44 @@ $validatedData = $request->validate([
     'username' => 'unique_dynamic:users,username,type,student',
     // With ignore for edit user, 6 parameter
     'username' => 'unique_dynamic:users,username,type,student,id,5',
+]);
+```
+
+> persian_alphabetic
+```
+return [
+    'code' => 'required|persian_alphabetic'
+];
+
+--OR--
+
+return [
+    'code' => ['required, 'persian_alphabetic']
+];
+
+--OR--
+
+$validatedData = $request->validate([
+    'code' => 'persian_alphabetic',
+]);
+```
+
+> persian_number
+```
+return [
+    'code' => 'required|persian_number'
+];
+
+--OR--
+
+return [
+    'code' => ['required, 'persian_number']
+];
+
+--OR--
+
+$validatedData = $request->validate([
+    'code' => 'persian_number',
 ]);
 ```
 

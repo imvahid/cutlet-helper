@@ -176,7 +176,7 @@ Validator::extend('debit_card', function ($attribute, $card_number, $parameters,
  * @return bool
  */
 Validator::extend('postal_code', function ($attribute, $code, $parameters, $validator) {
-    $status = (bool)preg_match("/^([13456789]{10})$/", $code);
+    $status = (bool)preg_match("/\b(?!(\d){3})[13-9]{4}[1346-9][013-9]{5}\b/", $code);
 
     return $status;
 }, config('cutlet-helper.postal_code'));
@@ -303,3 +303,33 @@ Validator::extend('unique_dynamic', function ($attribute, $value, $parameters, $
     return !$query->exists();
 
 }, config('cutlet-helper.unique_dynamic'));
+
+/**
+ *
+ * Validate Iranian Alphabetic without number
+ *
+ * @param $attribute
+ * @param $character
+ * @param $parameters
+ * @return bool
+ */
+Validator::extend('persian_alphabetic', function ($attribute, $character, $parameters, $validator) {
+    $status = (bool)preg_match("/^[\x{0621}-\x{0628}]+$|[\x{062A}-\x{063A}]+$|[\x{0641}-\x{0642}]+$|[\x{0644}-\x{0648}]+$|[\x{064E}-\x{0651}]+$|[\x{0655}\x{067E}\x{0686}\x{0698}\x{06A9}\x{06AF}\x{06BE}\x{06CC}]+$|^$/u", $character);
+
+    return $status;
+}, config('cutlet-helper.persian_alphabetic'));
+
+/**
+ *
+ * Validate Iranian numbers
+ *
+ * @param $attribute
+ * @param $character
+ * @param $parameters
+ * @return bool
+ */
+Validator::extend('persian_number', function ($attribute, $character, $parameters, $validator) {
+    $status = (bool)preg_match("/^[\x{06F0}-\x{06F9}]+$|^$/u", $character);
+
+    return $status;
+}, config('cutlet-helper.persian_number'));
