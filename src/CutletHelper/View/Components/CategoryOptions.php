@@ -15,16 +15,19 @@ class CategoryOptions extends Component
      */
     public $page;
 
-    public $selected;
+    public $parent_id;
 
     public $type;
 
-    public function __construct($page,$selected = '',$type)
+    public $category_id;
+
+    public function __construct($page,$parent,$type,$category)
     {
         // Set input variables to generate a component
         $this->page = $page;
-        $this->selected = $selected;
+        $this->parent_id = $parent;
         $this->type = $type;
+        $this->category_id = $category;
     }
 
     public function render()
@@ -33,7 +36,7 @@ class CategoryOptions extends Component
             case 'create':
                 return CategoryHelperFacade::category_select_options($this->categories(), old('parent_id'));
             case 'edit':
-                return '';
+                return CategoryHelperFacade::category_select_options($this->categories(), old('parent_id', $this->parent_id), $this->category_id);
         }
     }
 
