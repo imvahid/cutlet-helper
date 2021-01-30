@@ -337,7 +337,49 @@ $validatedData = $request->validate([
 ]);
 ```
 
+#### Categories Usage
+
+This package provides category handling for blew table structure with `Category` model:
+
+categories => `id, slug, title, category_type, description, parent_id, creator_id`
+
+categorizables => `category_id, categorizable_id, categorizable_type`
+
+> Usage in category create blade :
+
+`<x-category-options page="create" type="serviceCategory"></x-category-options>`
+
+* this tag generates select options , so you can use it in select or select2 tags.
+  
+* type: the category type used in the table structure, for example postCategory
+
+* page: the blade page that contains the current tag
+
+> Usage in category edit blade:
+
+`<x-category-options page="edit" type="serviceCategory" parent="{{ $category->parent_id }}" category="{{ $category->id }}"></x-category-options>`
+
+* parent: that contains current category parent_id
+
+* category: that contains current category_id
+
+> Usage in specific create blade that contains category:
+
+`<x-category-options page="create" type="serviceCategory"></x-category-options>`
+
+* this tag generates checkboxes , so you can use it in any div tag.
+
+* type: the category type used in the table structure, for example postCategory
+
+* page: the blade page that contains the current tag
+
+> Usage in specific edit blade that contains category:
+
+`<x-category-checkboxes type="serviceCategory" page="edit" checked="{{ $service->categories->pluck('id') }}"></x-category-checkboxes>`
+
+* checked: an array that contains synced categories with the main object, for example services->categories
+
 #### Requirements:
 
 - PHP v7.0 or above
-- Laravel v5.6.0 or above
+- Laravel v7.0 or above
