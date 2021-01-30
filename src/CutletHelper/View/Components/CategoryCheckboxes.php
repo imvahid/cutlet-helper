@@ -17,11 +17,14 @@ class CategoryCheckboxes extends Component
 
     public $page;
 
-    public function __construct($type,$page)
+    public $checked;
+
+    public function __construct($type,$page,$checked = '')
     {
         // Set input variables to generate a component
         $this->type = $type;
         $this->page = $page;
+        $this->checked = $checked;
     }
 
     public function render()
@@ -30,7 +33,10 @@ class CategoryCheckboxes extends Component
             case 'create':
                 return CategoryHelperFacade::category_checkboxes($this->categories(), old('categories'), $prefix="");
             case 'edit':
-                return CategoryHelperFacade::category_checkboxes($this->categories(), old('categories'), $prefix="");
+                $this->checked = str_replace('[', '', $this->checked);
+                $this->checked = str_replace(']', '', $this->checked);
+                $this->checked = str_replace(',', '', $this->checked);
+                return CategoryHelperFacade::category_checkboxes($this->categories(), old( 'categories', str_split($this->checked) ), $prefix="" );
         }
     }
 
