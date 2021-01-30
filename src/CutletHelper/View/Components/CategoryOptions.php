@@ -17,11 +17,14 @@ class CategoryOptions extends Component
 
     public $selected;
 
-    public function __construct($page,$selected = '')
+    public $type;
+
+    public function __construct($page,$selected = '',$type)
     {
         // Set input variables to generate a component
         $this->page = $page;
         $this->selected = $selected;
+        $this->type = $type;
     }
 
     public function render()
@@ -36,6 +39,8 @@ class CategoryOptions extends Component
 
     public function categories()
     {
-        return Category::all();
+        return Category::query()->where('parent_id', 0)
+            ->where('category_type', $this->type)
+            ->get();
     }
 }
