@@ -34,6 +34,10 @@ php artisan vendor:publish --tag=cutlet-helper
 
 5. isActive($key, $activeClassName = 'active') : Check the route name(string) or route names(array) is avtive or no for css classes
 
+6. prepareInteger(input: string or integer) : removes `,` from integer (can be used in request for prices)
+
+7. prepareSlug(slug, title, model) : generate clean slug from title and checks slug unique in specific model
+
 ..
 ```
 #### Helper Functions Usage
@@ -45,8 +49,8 @@ CutletHelper::stringToken(length: 32, characters: '2345679acdefghjkmnpqrstuvwxyz
 CutletHelper::digitsToEastern(number: 1375);
 CutletHelper::easternToDigits(number: ۱۳۷۵);
 CutletHelper::isActive(key: ['posts.index', 'posts.create', 'posts.edit'], activeClassName: 'acive');
-CutletHelper::prepareInteger(input: string or integer); --> removes `,` from integer
-CutletHelper::prepareSlug(slug, title, model); --> generate clean slug from title and checks slug unique in specific model
+CutletHelper::prepareInteger(input: string or integer);
+CutletHelper::prepareSlug(slug, title, model);
 
 
 ## Call a helper function:
