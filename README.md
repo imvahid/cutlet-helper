@@ -45,6 +45,9 @@ CutletHelper::stringToken(length: 32, characters: '2345679acdefghjkmnpqrstuvwxyz
 CutletHelper::digitsToEastern(number: 1375);
 CutletHelper::easternToDigits(number: ۱۳۷۵);
 CutletHelper::isActive(key: ['posts.index', 'posts.create', 'posts.edit'], activeClassName: 'acive');
+CutletHelper::prepareInteger(input: string or integer); --> removes `,` from integer
+CutletHelper::prepareSlug(slug, title, model); --> generate clean slug from title and checks slug unique in specific model
+
 
 ## Call a helper function:
 
@@ -53,6 +56,8 @@ stringToken(length: 32, characters: '2345679acdefghjkmnpqrstuvwxyz');
 digitsToEastern(number: 1375);
 easternToDigits(number: ۱۲۳۴۵);
 isActive(key: ['posts.index', 'posts.create', 'posts.edit'], activeClassName: 'acive');
+prepareInteger(input: string or integer);
+prepareSlug(slug, title, model);
 
 ```
 
