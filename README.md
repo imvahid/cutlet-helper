@@ -4,6 +4,23 @@
 [![GitHub forks](https://img.shields.io/github/forks/va1hi9da9sh2ou0rz2ad1eh7/cutlet-helper?style=flat-square)](https://github.com/va1hi9da9sh2ou0rz2ad1eh7/cutlet-helper/network)
 [![GitHub license](https://img.shields.io/github/license/va1hi9da9sh2ou0rz2ad1eh7/cutlet-helper?style=flat-square)](https://github.com/va1hi9da9sh2ou0rz2ad1eh7/cutlet-helper/blob/master/LICENSE)
 
+### Quick links
+
+* <a href="https://github.com/va1hi9da9sh2ou0rz2ad1eh7/cutlet-helper#installation">Installation</a>
+  
+* <a href="https://github.com/va1hi9da9sh2ou0rz2ad1eh7/cutlet-helper#publish-config-file">Publish Config file</a>
+  
+* <a href="https://github.com/va1hi9da9sh2ou0rz2ad1eh7/cutlet-helper#helper-functions-and-facades-that-exists-in-package">Helper functions and facades that exists in package</a>
+
+* <a href="https://github.com/va1hi9da9sh2ou0rz2ad1eh7/cutlet-helper#helper-functions-usage">Helper Functions Usage</a>
+  
+* <a href="https://github.com/va1hi9da9sh2ou0rz2ad1eh7/cutlet-helper#validators-that-exists-in-package">Validators that exists in package</a>
+  
+* <a href="https://github.com/va1hi9da9sh2ou0rz2ad1eh7/cutlet-helper#validators-usage">Validators Usage</a>
+  
+* <a href="https://github.com/va1hi9da9sh2ou0rz2ad1eh7/cutlet-helper#categories-usage">Categories Usage</a>
+  
+* <a href="https://github.com/va1hi9da9sh2ou0rz2ad1eh7/cutlet-helper#requirements">Requirements</a>
 
 ### Installation
 
@@ -374,7 +391,7 @@ categorizables => `category_id, categorizable_id, categorizable_type`
 
 > Usage in specific create blade that contains category:
 
-`<x-category-options page="create" type="serviceCategory"></x-category-options>`
+`<x-category-checkboxes page="create" type="serviceCategory"></x-category-checkboxes>`
 
 * this tag generates checkboxes , so you can use it in any div tag.
 
