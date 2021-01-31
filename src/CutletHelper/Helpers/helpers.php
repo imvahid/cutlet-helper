@@ -24,3 +24,13 @@ function isActive($key, $activeClassName = 'active') {
 
     return CutletHelper::isActive($key, $activeClassName);
 }
+
+function prepareInteger($input) {
+
+    return CutletHelper::prepareInteger($input);
+}
+
+function prepareSlug($slug, $title, $model) {
+
+    return CutletHelper::prepareSlug($slug, $title, $model);
+}

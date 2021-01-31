@@ -21,7 +21,7 @@ class CategoryOptions extends Component
 
     public $category_id;
 
-    public function __construct($page,$parent,$type,$category)
+    public function __construct($page,$type,$category = '',$parent = '')
     {
         // Set input variables to generate a component
         $this->page = $page;
