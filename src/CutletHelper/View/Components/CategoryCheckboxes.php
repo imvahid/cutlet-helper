@@ -35,8 +35,8 @@ class CategoryCheckboxes extends Component
             case 'edit':
                 $this->checked = str_replace('[', '', $this->checked);
                 $this->checked = str_replace(']', '', $this->checked);
-                $this->checked = str_replace(',', '', $this->checked);
-                return CategoryHelperFacade::category_checkboxes($this->categories(), old( 'categories', str_split($this->checked) ), $prefix="" );
+                $this->checked = explode( ",", $this->checked );
+                return CategoryHelperFacade::category_checkboxes($this->categories(), old( 'categories', $this->checked ), $prefix="" );
         }
     }
 
