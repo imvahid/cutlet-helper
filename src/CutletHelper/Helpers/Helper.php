@@ -82,4 +82,12 @@ class Helper
 
         return $selected_slug;
     }
+
+    public function prepareMetaDescription($input)
+    {
+        $stripString = strip_tags($input);
+        $trimString = trim($stripString);
+        $result = mb_strimwidth($trimString, 0, 160);
+        return $result;
+    }
 }

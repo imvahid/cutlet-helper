@@ -9,6 +9,7 @@ namespace Va\CutletHelper\Facades;
  * @method static int digitsToEastern(int|string $number)
  * @method static int easternToDigits(int|string $number)
  * @method static string isActive(string|array $key, string $activeClassName = 'active')
+ * @method static string prepareMetaDescription(string $input)
  *
  * @see \Va\CutletHelper\Helpers\Helper
  */
