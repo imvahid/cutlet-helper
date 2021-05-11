@@ -15,7 +15,7 @@ class CreateNationalCodeExceptionsTable extends Migration
     {
         Schema::create('national_code_exceptions', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
+            $table->string('code', 512);
             $table->timestamps();
         });
     }
