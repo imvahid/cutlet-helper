@@ -15,6 +15,19 @@ Validator::extend('national_code', function ($attribute, $code, $parameters, $va
     if (empty($code)) {
         return true;
     }
+
+    if (!empty($parameters)) {
+        $table = $parameters[0] ?? 'national_code_exceptions';
+        $column = $parameters[1] ?? 'code';
+
+        $is_exists = \Illuminate\Support\Facades\DB::table($table)->where($column, $code)->exists();
+
+        if($is_exists) {
+            return true;
+        }
+        return false;
+    }
+
     $sum = 0;
 
     $invalidCodes = [

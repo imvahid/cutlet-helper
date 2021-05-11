@@ -33,6 +33,7 @@ class CutletHelperServiceProvider extends ServiceProvider
     {
         require_once(__DIR__ . '/Validations/helperValidation.php');
         $this->loadViewsFrom(__DIR__ . '/views','cutlet_helper');
+        $this->loadMigrationsFrom(__DIR__ . '../database/migrations');
         $this->loadViewComponentsAs('', [
             CategoryCheckboxes::class,
             CategoryOptions::class
