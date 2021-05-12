@@ -105,9 +105,11 @@ return [
 ];
 
 For national_code with exeptions code or valid codes for foreign national codes
+First step for use this parameters is migrate, php artisan migrate, and save your exeptions in this table 
+but if you want to use another table you can set your table and column
 return [
     'code' => 'required|national_code:national_code_exceptions' // This is default table that contains exeption codes
-    or
+    -- OR -- 
     'code' => 'required|national_code:national_code_exceptions,code' // Second parameter is column of exeption table
 ];
 
