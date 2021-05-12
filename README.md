@@ -104,6 +104,13 @@ return [
     'code' => 'required|national_code'
 ];
 
+For national_code with exeptions code or valid codes for foreign national codes
+return [
+    'code' => 'required|national_code:national_code_exceptions' // This is default table that contains exeption codes
+    or
+    'code' => 'required|national_code:national_code_exceptions,code' // Second parameter is column of exeption table
+];
+
 -- OR --
 
 return [

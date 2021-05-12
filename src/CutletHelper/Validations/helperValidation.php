@@ -16,19 +16,8 @@ Validator::extend('national_code', function ($attribute, $code, $parameters, $va
         return true;
     }
 
-    if (!empty($parameters)) {
-        $table = $parameters[0] ?? 'national_code_exceptions';
-        $column = $parameters[1] ?? 'code';
-
-        $is_exists = \Illuminate\Support\Facades\DB::table($table)->where($column, $code)->exists();
-
-        if($is_exists) {
-            return true;
-        }
-        return false;
-    }
-
     $sum = 0;
+    $status = false;
 
     $invalidCodes = [
         '0000000000',
@@ -45,10 +34,11 @@ Validator::extend('national_code', function ($attribute, $code, $parameters, $va
 
     // Check for invalid codes
     if ($code < 1 || in_array($code, $invalidCodes)) {
-        return false;
+        $status = false;
     }
 
     // Add zero to first of code if needed
+    $default= $code;
     $code = str_pad($code, 10, '0', STR_PAD_LEFT);
 
     // Select control digit
@@ -64,10 +54,25 @@ Validator::extend('national_code', function ($attribute, $code, $parameters, $va
 
     // Check code
     if (($remain < 2 && $check_number == $remain) || ($remain >= 2 && $check_number == (11 - $remain))) {
-        return true;
+        $status = true;
     } else {
-        return false;
+        $status = false;
     }
+
+    if (!empty($parameters) && $status == false) {
+        $table = $parameters[0] ?? 'national_code_exceptions';
+        $column = $parameters[1] ?? 'code';
+
+        \Illuminate\Support\Facades\DB::enableQueryLog();
+        $is_exists = \Illuminate\Support\Facades\DB::table($table)->where($column, $default)->exists();
+
+        if($is_exists) {
+            $status = true;
+        } else {
+            $status = false;
+        }
+    }
+    return $status;
 }, config('cutlet-helper.national_code'));
 
 /**
