@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Validator;
  */
 Validator::extend('national_code', function ($attribute, $code, $parameters, $validator) {
     if (empty($code)) {
-        return true;
+        return false;
     }
 
     $sum = 0;
@@ -63,7 +63,6 @@ Validator::extend('national_code', function ($attribute, $code, $parameters, $va
         $table = $parameters[0] ?? 'national_code_exceptions';
         $column = $parameters[1] ?? 'code';
 
-        \Illuminate\Support\Facades\DB::enableQueryLog();
         $is_exists = \Illuminate\Support\Facades\DB::table($table)->where($column, $default)->exists();
 
         if($is_exists) {
