@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Validator;
  * @return bool
  */
 Validator::extend('national_code', function ($attribute, $code, $parameters, $validator) {
-    if (empty($code)) {
+    if (empty($code)|| ! preg_match('/^[0-9]+$/', $code)) {
         return false;
     }
 
