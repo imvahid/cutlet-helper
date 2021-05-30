@@ -21,6 +21,8 @@ class CategoryOptions extends Component
 
     public $category_id;
 
+    public $create_html, $edit_html;
+
     public function __construct($page,$type,$category = '',$parent = '')
     {
         // Set input variables to generate a component
@@ -34,9 +36,11 @@ class CategoryOptions extends Component
     {
         switch ($this->page){
             case 'create':
-                return CategoryHelperFacade::category_select_options($this->categories(), old('parent_id'));
+                $this->create_html = CategoryHelperFacade::category_select_options($this->categories(), old('parent_id'));
+                return view('vendor.cutlet-helper.category-option-create');
             case 'edit':
-                return CategoryHelperFacade::category_select_options($this->categories(), old('parent_id', $this->parent_id), $this->category_id);
+                $this->edit_html = CategoryHelperFacade::category_select_options($this->categories(), old('parent_id', $this->parent_id), $this->category_id);
+                return view('vendor.cutlet-helper.category-option-edit');
         }
     }
 

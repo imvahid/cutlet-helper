@@ -19,6 +19,8 @@ class CategoryCheckboxes extends Component
 
     public $checked;
 
+    public $create_html, $edit_html;
+
     public function __construct($type,$page,$checked = '')
     {
         // Set input variables to generate a component
@@ -31,12 +33,14 @@ class CategoryCheckboxes extends Component
     {
         switch ($this->page){
             case 'create':
-                return CategoryHelperFacade::category_checkboxes($this->categories(), old('categories'), $prefix="");
+                $this->create_html = CategoryHelperFacade::category_checkboxes($this->categories(), old('categories'), $prefix="");
+                return view('vendor.cutlet-helper.category-checkbox-create');
             case 'edit':
                 $this->checked = str_replace('[', '', $this->checked);
                 $this->checked = str_replace(']', '', $this->checked);
                 $this->checked = explode( ",", $this->checked );
-                return CategoryHelperFacade::category_checkboxes($this->categories(), old( 'categories', $this->checked ), $prefix="" );
+                $this->edit_html = CategoryHelperFacade::category_checkboxes($this->categories(), old( 'categories', $this->checked ), $prefix="" );
+                return view('vendor.cutlet-helper.category-checkbox-edit');
         }
     }
 

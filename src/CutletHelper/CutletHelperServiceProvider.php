@@ -40,6 +40,7 @@ class CutletHelperServiceProvider extends ServiceProvider
         ]);
         $this->publishes([
             __DIR__ . '/../config/cutlet-helper.php' => config_path('cutlet-helper.php'),
+            __DIR__.'/views/' => resource_path('views/vendor/cutlet-helper'),
         ], 'cutlet-helper');
     }
 }
