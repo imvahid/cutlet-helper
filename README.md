@@ -1,8 +1,10 @@
 # Laravel Cutlet Helper
-[![GitHub issues](https://img.shields.io/github/issues/va1hi9da9sh2ou0rz2ad1eh7/cutlet-helper?style=flat-square)](https://github.com/va1hi9da9sh2ou0rz2ad1eh7/cutlet-helper/issues)
-[![GitHub stars](https://img.shields.io/github/stars/va1hi9da9sh2ou0rz2ad1eh7/cutlet-helper?style=flat-square)](https://github.com/va1hi9da9sh2ou0rz2ad1eh7/cutlet-helper/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/va1hi9da9sh2ou0rz2ad1eh7/cutlet-helper?style=flat-square)](https://github.com/va1hi9da9sh2ou0rz2ad1eh7/cutlet-helper/network)
-[![GitHub license](https://img.shields.io/github/license/va1hi9da9sh2ou0rz2ad1eh7/cutlet-helper?style=flat-square)](https://github.com/va1hi9da9sh2ou0rz2ad1eh7/cutlet-helper/blob/master/LICENSE)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/va/cutlet-helper.svg?style=flat-square)](https://packagist.org/packages/va/cutlet-helper)
+[![GitHub issues](https://img.shields.io/github/issues/imvahid/cutlet-helper?style=flat-square)](https://github.com/imvahid/cutlet-helper/issues)
+[![GitHub stars](https://img.shields.io/github/stars/imvahid/cutlet-helper?style=flat-square)](https://github.com/imvahid/cutlet-helper/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/imvahid/cutlet-helper?style=flat-square)](https://github.com/imvahid/cutlet-helper/network)
+[![Total Downloads](https://img.shields.io/packagist/dt/va/cutlet-helper.svg?style=flat-square)](https://packagist.org/packages/va/cutlet-helper)
+[![GitHub license](https://img.shields.io/github/license/imvahid/cutlet-helper?style=flat-square)](https://github.com/imvahid/cutlet-helper/blob/master/LICENSE)
 
 ### Quick links
 
