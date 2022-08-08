@@ -27,41 +27,36 @@
 ### Installation
 
 ```
-
 composer require va/cutlet-helper
-
 ```
 
 #### Publish Config file
 
 ```
-
 php artisan vendor:publish --tag=cutlet-helper
-
 ```
 
 #### Helper functions and facades that exists in package
 
-```
-1. integerToken($length = 5) : Generate integer token or code
+```php
+integerToken($length = 5) // Generate integer token or code
 
-2. stringToken($length = 16, $characters = '2345679acdefghjkmnpqrstuvwxyz') : Generate string token or code
+stringToken($length = 16, $characters = '2345679acdefghjkmnpqrstuvwxyz') // Generate string token or code
 
-3. digitsToEastern($number) : Covert a Weatern number(English) or digits to Eastern number(Persian or Arabic)
+digitsToEastern($number) // Covert a Weatern number(English) or digits to Eastern number(Persian or Arabic)
 
-4. easternToDigits($number) : Covert a Eastern number(Persion, Arabic) to Eastern number(English)
+easternToDigits($number) // Covert a Eastern number(Persion, Arabic) to Eastern number(English)
 
-5. isActive($key, $activeClassName = 'active') : Check the route name(string) or route names(array) is avtive or no for css classes
+isActive($key, $activeClassName = 'active') // Check the route name(string) or route names(array) is avtive or no for css classes
 
-6. prepareInteger(input: string or integer) : removes `,` from integer (can be used in request for prices)
+prepareInteger(input: string or integer) // removes `,` from integer (can be used in request for prices)
 
-7. prepareSlug(slug, title, model) : generate clean slug from title and checks slug unique in specific model
+prepareSlug(slug, title, model) // generate clean slug from title and checks slug unique in specific model
 
-..
 ```
 #### Helper Functions Usage
-```
-## With Facade format:
+```php
+// With Facade format:
 
 CutletHelper::integerToken(length: 10);
 CutletHelper::stringToken(length: 32, characters: '2345679acdefghjkmnpqrstuvwxyz');
@@ -72,7 +67,7 @@ CutletHelper::prepareInteger(input: string or integer);
 CutletHelper::prepareSlug(slug, title, model);
 
 
-## Call a helper function:
+// Call a helper function:
 
 integerToken(length: 10)
 stringToken(length: 32, characters: '2345679acdefghjkmnpqrstuvwxyz');
@@ -101,27 +96,27 @@ prepareSlug(slug, title, model);
 > national_code
 >
 >A rule for validating Iranian national code [(How calculated)](https://fa.wikipedia.org/wiki/%DA%A9%D8%A7%D8%B1%D8%AA_%D8%B4%D9%86%D8%A7%D8%B3%D8%A7%DB%8C%DB%8C_%D9%85%D9%84%DB%8C#%D8%AD%D8%B3%D8%A7%D8%A8_%DA%A9%D8%B1%D8%AF%D9%86_%DA%A9%D8%AF_%DA%A9%D9%86%D8%AA%D8%B1%D9%84)
-```
+```php
 return [
     'code' => 'required|national_code'
 ];
 
-For national_code with exeptions code or valid codes for foreign national codes
-First step for use this parameters is migrate, php artisan migrate, and save your exeptions in this table 
-but if you want to use another table you can set your table and column
+// For national_code with exeptions code or valid codes for foreign national codes
+// First step for use this parameters is migrate, php artisan migrate, and save your exeptions in this table 
+// but if you want to use another table you can set your table and column
 return [
     'code' => 'required|national_code:national_code_exceptions' // This is default table that contains exeption codes
-    -- OR -- 
+    // -- OR -- 
     'code' => 'required|national_code:national_code_exceptions,code' // Second parameter is column of exeption table
 ];
 
--- OR --
+// -- OR --
 
 return [
     'code' => ['required', 'national_code']
 ];
 
--- OR --
+// -- OR --
 
 $validatedData = $request->validate([
     'code' => 'national_code',
@@ -131,21 +126,21 @@ $validatedData = $request->validate([
 > iban
 >
 >A rule for validating IBAN (International Bank Account Number) known in Iran as Sheba. [(How calculated)](https://fa.wikipedia.org/wiki/%D8%A7%D9%84%DA%AF%D9%88%D8%B1%DB%8C%D8%AA%D9%85_%DA%A9%D8%AF_%D8%B4%D8%A8%D8%A7#%D8%A7%D9%84%DA%AF%D9%88%D8%B1%DB%8C%D8%AA%D9%85_%DA%A9%D8%AF_%D8%B4%D8%A8%D8%A7)
-```
+```php
 return [
     'account' => 'iban'
 ];
 
--- OR --
+// -- OR --
 
-Add `false` optional parameter after `iban`, If IBAN doesn't begin with `IR`, so the validator will add `IR` as default to the account number:
+// Add `false` optional parameter after `iban`, If IBAN doesn't begin with `IR`, so the validator will add `IR` as default to the account number:
 return [
     'account' => 'iban:false'
 ];
 
--- OR --
+// -- OR --
 
-If you want to validate non Iranian IBAN, add the 2 letters of country code after `false` optional parameter:
+// If you want to validate non Iranian IBAN, add the 2 letters of country code after `false` optional parameter:
 return [
     'account' => 'iban:false,DE'
 ];
@@ -154,31 +149,31 @@ return [
 > debit_card
 >
 >A rule for validating Iranian debit cards. [(How calculated)](http://www.aliarash.com/article/creditcart/credit-debit-cart.htm)
-```
+```php
 return [
     'code' => 'required|debit_card'
 ];
 
--- OR --
+// -- OR --
 
 return [
     'code' => ['required', 'debit_card']
 ];
 
--- OR --
+// -- OR --
 
 $validatedData = $request->validate([
     'code' => 'debit_card',
 ]);
 
--- OR --
+// -- OR --
 
-You can add an optional parameter if you want to validate a card from a specific bank:
+// You can add an optional parameter if you want to validate a card from a specific bank:
 return [
     'code' => 'required|debit_card:bmi'
 ];
 
-List of the bank codes:
+/* List of the bank codes:
 
  - bmi (بانک ملی)
  - banksepah (بانک سپه)
@@ -203,21 +198,22 @@ List of the bank codes:
  - refah-bank (بانک رفاه)
  - ansarbank (بانک انصار)
  - mebank (بانک مهر اقتصاد)
+*/
 ```
 
 > postal_code
-```
+```php
 return [
     'code' => 'required|postal_code'
 ];
 
---OR--
+// --OR--
 
 return [
     'code' => ['required, 'postal_code']
 ];
 
---OR--
+// --OR--
 
 $validatedData = $request->validate([
     'code' => 'postal_code',
@@ -227,18 +223,18 @@ $validatedData = $request->validate([
 > shenase_meli
 >
 >A rule for validating Iranian shenase meli [(How calculated)](http://www.aliarash.com/article/shenasameli/shenasa_meli.htm)
-```
+```php
 return [
     'code' => 'required|shenase_meli'
 ];
 
---OR--
+// --OR--
 
 return [
     'code' => ['required, 'shenase_meli']
 ];
 
---OR--
+// --OR--
 
 $validatedData = $request->validate([
     'code' => 'shenase_meli',
@@ -246,18 +242,18 @@ $validatedData = $request->validate([
 ```
 
 > mobile
-```
+```php
 return [
     'mobile' => 'required|mobile'
 ];
 
---OR--
+// --OR--
 
 return [
     'mobile' => ['required, 'mobile']
 ];
 
---OR--
+// --OR-- 
 
 $validatedData = $request->validate([
     'mobile' => 'mobile',
@@ -265,18 +261,18 @@ $validatedData = $request->validate([
 ```
 
 > username (Valid characters: English Alphabetic, Numbers and _)
-```
+```php
 return [
     'username' => 'required|username'
 ];
 
---OR--
+// --OR--
 
 return [
     'username' => ['required, 'username']
 ];
 
---OR--
+// --OR--
 
 $validatedData = $request->validate([
     'username' => 'username',
@@ -284,18 +280,18 @@ $validatedData = $request->validate([
 ```
 
 > phone
-```
+```php
 return [
     'phone' => 'required|phone'
 ];
 
---OR--
+// --OR--
 
 return [
     'phone' => ['required, 'phone']
 ];
 
---OR--
+// --OR--
 
 $validatedData = $request->validate([
     'phone' => 'phone',
@@ -303,7 +299,7 @@ $validatedData = $request->validate([
 ```
 
 > unique_dynamic (table_name, target_column, extra_column, extra_column_value, ignore_column, ignore_column_value)
-```
+```php
 return [
     // Without ignore for create user, 4 parameters
     // If we want to check a username is unique in users table when type of this useranme equal student
@@ -316,7 +312,7 @@ return [
     'username' => 'required|unique_dynamic:users,username,type,student,id,5'
 ];
 
---OR--
+// --OR--
 
 return [
     // Without ignore for create user, 4 parameters
@@ -326,7 +322,7 @@ return [
     'username' => ['required, 'unique_dynamic:users,username,type,student,id,5']
 ];
 
---OR--
+// --OR--
 
 $validatedData = $request->validate([
     // Without ignore for create user, 4 parameters
@@ -337,18 +333,18 @@ $validatedData = $request->validate([
 ```
 
 > persian_alphabetic
-```
+```php
 return [
     'code' => 'required|persian_alphabetic'
 ];
 
---OR--
+// --OR--
 
 return [
     'code' => ['required, 'persian_alphabetic']
 ];
 
---OR--
+// --OR--
 
 $validatedData = $request->validate([
     'code' => 'persian_alphabetic',
@@ -356,18 +352,18 @@ $validatedData = $request->validate([
 ```
 
 > persian_number
-```
+```php
 return [
     'code' => 'required|persian_number'
 ];
 
---OR--
+// --OR--
 
 return [
     'code' => ['required, 'persian_number']
 ];
 
---OR--
+// --OR--
 
 $validatedData = $request->validate([
     'code' => 'persian_number',
