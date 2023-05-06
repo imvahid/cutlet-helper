@@ -90,4 +90,9 @@ class Helper
         $result = mb_strimwidth($trimString, 0, 160);
         return $result;
     }
+
+    public function modelNamespace($model)
+    {
+        return !is_null(config('cutlet-helper.namespaces.'.$model.'.custom')) ? config('cutlet-helper.namespaces.'.$model.'.custom') : config('cutlet-helper.namespaces.'.$model.'.default');
+    }
 }

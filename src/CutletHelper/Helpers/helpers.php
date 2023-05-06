@@ -38,3 +38,7 @@ function prepareSlug($slug, $title, $model) {
 function prepareMetaDescription($input) {
     return CutletHelper::prepareMetaDescription($input);
 }
+
+function modelNamespace($model) {
+    return CutletHelper::modelNamespace($model);
+}

@@ -10,6 +10,7 @@ namespace Va\CutletHelper\Facades;
  * @method static int easternToDigits(int|string $number)
  * @method static string isActive(string|array $key, string $activeClassName = 'active')
  * @method static string prepareMetaDescription(string $input)
+ * @method static string modelNamespace($model)
  *
  * @see \Va\CutletHelper\Helpers\Helper
  */

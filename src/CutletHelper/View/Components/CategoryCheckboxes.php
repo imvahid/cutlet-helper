@@ -2,7 +2,6 @@
 
 namespace Va\CutletHelper\View\Components;
 
-use App\Models\Category;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 use Va\CutletHelper\Facades\CategoryHelperFacade;
@@ -46,7 +45,7 @@ class CategoryCheckboxes extends Component
 
     public function categories()
     {
-        return Category::where('parent_id', 0)
+        return modelNamespace('Category')::where('parent_id', 0)
             ->where('category_type', $this->type)
             ->get();
     }

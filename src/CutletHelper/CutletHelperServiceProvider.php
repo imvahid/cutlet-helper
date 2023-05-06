@@ -9,7 +9,6 @@ use Va\CutletHelper\Helpers\CategoryHelper;
 use Va\CutletHelper\Helpers\Helper;
 use Va\CutletHelper\View\Components\CategoryCheckboxes;
 use Va\CutletHelper\View\Components\CategoryOptions;
-use Va\CutletHelper\View\Components\CategorySelect;
 
 class CutletHelperServiceProvider extends ServiceProvider
 {
