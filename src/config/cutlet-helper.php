@@ -18,5 +18,7 @@ return [
             'default' => 'App\\Models\\Category',
             'custom'  => null
         ]
-    ]
+    ],
+
+    'migrate_tables' => true
 ];
